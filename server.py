@@ -12,7 +12,7 @@ def index():
 @socketio.on('send_message')
 def handle_source(json_data):
     //text = json_data['message'].encode('ascii', 'ignore')
-    socketio.emit('echo', {'rep':'Server Says:'})
+    socketio.emit('echo', {'rep':'Server Says...'})
 
 @socketio.on('connect')
 def test_connect():
