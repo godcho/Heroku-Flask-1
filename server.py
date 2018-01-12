@@ -3,16 +3,20 @@ from flask_socketio import SocketIO,emit
 import json
 
 app = Flask(__name__)
-socketio = SocketIO(app,)
+socketio = SocketIO(app)
 
 @app.route("/")
 def index():
-    return render_template('index.html',)
+    return render_template('index.html')
 
 @socketio.on('send_message')
 def handle_source(json_data):
     text = json_data['message'].encode('ascii', 'ignore')
     socketio.emit('echo', {'echo': 'Server Says: '+text})
 
+@socketio.on('connect')
+def test_connect():
+    emit('my_response', {'data': 'Connected', 'count': 0})
+    
 if __name__ == "__main__":
-    socketio.run(app)
+    socketio.run(app, host='0.0.0.0',debug=True)
