@@ -8,7 +8,7 @@
             	var socket = io.connect(location.protocol+'//' + document.domain + ':' + location.port );
             	
 				socket.on('echo', function(data){
-                	$('#response').html('<p>'+data.echo+'</p>');
+                	$('#response').html('<p>'+data.rep+'</p>');
             	});
 				
 	            socket.on('my_response', function(msg) {
