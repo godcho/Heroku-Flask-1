@@ -10,9 +10,9 @@ def index():
     return render_template('index.html')
 
 @socketio.on('send_message')
-def handle_source(json_data):
+def handle_source(message):
     ##text = json_data['message'].encode('ascii', 'ignore')
-    socketio.emit('echo', {'rep':'Server Says...'})
+    socketio.emit('echo', {'rep':'Server Says...'+message['data']})
 
 @socketio.on('connect')
 def test_connect():

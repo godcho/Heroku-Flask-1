@@ -16,7 +16,7 @@
 	            });
 			
          	function send(){
-             	socket.emit('send_message', {message : $('form textarea').val()});
+             	socket.emit('send_message', {data : $("#mon_textarea").val()});
          	}
         </script>
         <style>
@@ -35,7 +35,7 @@
     <body>
         <div class="input">
             <form>
-                <textarea placeholder="Send a message to the server..."></textarea>
+                <textarea id="mon_textarea" placeholder="Send a message to the server..."></textarea>
                 <button type="button" onclick="send(); return false;">Send</button>
             </form>
         </div>
